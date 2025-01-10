@@ -1,0 +1,455 @@
+<doctype html>
+    <html>
+        <head>
+            <title>Mickey Mouse</title>
+            <meta charselt="utf-8">
+            <meta name="author" content="Yannis Bikouta">
+            <meta name="description" content>
+            <link rel="stylesheet" hrlef="index.css">
+            <style type="text/css">
+                html{
+                    background: radial-gradient(#eceae6,#e4cb70,#daa326);
+                }
+                *{
+                    margin: 0;
+                    padding: 0;
+                }
+                [alt="mickey"]{
+                    opacity: 50%;
+                    display: none;
+                }
+
+                #oreille-droite,#oreille-gauche,
+                #oeil-gauche,#oeil-droit,
+                #tete,#nez,#av-museau,#museau-ar,#museau-av,
+                #sous-bouche,#bouche,#langue-1,#langue-2,
+                #cache-oeil,#grand-bouche,#grand-oeil-gauche,#grand-oeil-droit{
+                    position: absolute;
+                    /*background-color: black;*/
+                    border: solid 2px black;
+                }
+                #oreille-gauche,#oreille-droite{
+                    height: 100px; width: 100px;
+                    border-radius: 50%;
+                    background-color: black;
+                }
+                #oreille-gauche{
+                    top: 120px;left: 210px;
+                    height: 110px;
+                }
+                #oreille-droite{
+                    top: 10px;left: 280;
+                    width: 110px;
+                }
+                #tete{
+                    top: 80px;left: 305px;
+                    height: 155px;width: 155px;
+                    border-radius: 50%;
+                    /*display: none;*/
+                    overflow: hidden;
+                    background-color: black;
+                }
+                #cache-oeil{
+                    height: 75px;width: 40px;
+                    top: 40px;left: 100px;
+                    background-color: white;
+                    border: 0px;
+                    z-index: 1;
+                }
+                #grand-bouche{/*-2*/
+                    rotate: z -40deg;
+                    height: 100px;width: 55px;
+                    top: 65px;left: 12px;
+                    border-radius: 50%;
+                    background-color: white;
+                }
+                #grand-oeil-gauche{/*-2*/
+                    height: 102px;width: 82px;
+                    top: 4px;left: 27px;
+                    border-radius: 50%;
+                    rotate: z -40deg;
+                    background-color: white;
+                    border: 0px;
+
+                }
+                #grand-oeil-droit{/*-2*/
+                    height: 102px;width: 82px;
+                    top: -40px;left: 90px;
+                    border-radius: 50%;
+                    rotate: z -40deg;
+                    background-color: white;
+                    border: 0px;
+
+                }
+                #oeil-gauche,#oeil-droit{
+                    position: absolute;
+                    background-color: black;
+                    z-index: 2;
+                }
+                #oeil-gauche{
+                    top: 11px;left: 83px;
+                    height: 55px;width: 15px;
+                    border-radius: 50%;
+                    rotate: z -40deg;
+                }
+                #oeil-droit{
+                    top: 3px;left: 120px;
+                    height: 55px;width: 15px;
+                    border-radius: 50%;
+                    rotate: z -40deg;
+                }
+                #sous-bouche{
+                    height: 80px;width: 100px;
+                    top: 168px;left: 350px;
+                    border-radius: 0 50% 50% 50%;
+                    rotate: z -14deg;
+                    background-color: white;
+                }
+                #bouche{
+                    height: 70px;width: 82px;
+                    top: 168px;left: 357px;
+                    border-radius: 0 50% 50% 50%;
+                    rotate: z -20deg;
+                    overflow: hidden;
+                    background-color: black;
+                }
+                #langue-1{
+                    top: 30px;left: -20px;
+                    height:50px;width: 60px;
+                    border-radius: 50%;
+                    rotate: z 20deg;
+                    background-color: white;
+                }
+                #langue-2{
+                    top: 50px;left: 10px;
+                    height:50px;width: 60px;
+                    border-radius: 50%;
+                    rotate: z 20deg;
+                    background-color: white;
+                }
+                #av-museau{
+                    height: 42px;width: 125px;
+                    top: 165px;left: 337px;
+                    border-radius: 50%;
+                    rotate: z 10deg;
+                    border: 0px;
+                    background-color: white;
+                    
+                }
+                #museau-ar,#museau-av{
+                    top: 120px;left: 421px;
+                    height: 80px;width: 75px;
+                    border-radius: 50% 50% 50% 40% / 50% 50% 50% 10%;
+                    rotate: z -23deg;
+                }
+                #museau-av{
+                    top: 122px;left: 423px;
+                    height: 80px;width: 75px;
+                    border-radius: 50% 50% 50% 40% / 50% 50% 50% 10%;
+                    rotate: z -23deg;
+                    z-index: 3;
+                }
+                #museau-ar{
+                    z-index: -56;
+                    background-color: white;
+                }
+                #museau-av{
+                    background-color: white;
+                    border: none;
+                }
+                #nez{
+                    top: 98px;left: 470px;
+                    height: 50px;width: 25px;
+                    rotate: z 20deg;
+                    border-radius: 50% 50% 50% 50%;
+                    background-color: black;
+                    z-index: 4;
+                }
+
+                #torse,#torse-bi,
+                #pantalon,#ventre,
+                #bouton-gauche,#bouton-droit,
+                #avant-bras-gauche,#avant-bras-droit,
+                #apres-bras-gauche,#apres-bras-droit,
+                #manche-gauche,#manche-droite,
+                #main-gauche,#main-droite,
+                #doigt-gauche-color,#doigt-gauche-1,#doigt-gauche-2,#doigt-gauche-3,
+                #doigt-droit-color,#doigt-droit-1,#doigt-droit-2,#doigt-droit-3,
+                #trait-gauche-1,#trait-gauche-2,#trait-gauche-3,
+                #trait-droit-1,#trait-droit-2,#trait-droit-3{
+                    position: absolute;
+                    border: solid 2px black;
+                }
+                #torse{
+                    top: 210px;left: 340px;
+                    height: 140px;width: 100px;
+                    border-radius: 30%;
+                    background-color: black;
+                }
+                #torse-bi{
+                    top: 202px;left: 330px;
+                    height: 150px;width: 100px;
+                    border-radius: 50%;
+                    rotate: z 20deg;
+                    background-color: black;
+                }
+                #pantalon{
+                    top: 268px;left: 310px;
+                    height: 140px;width: 170px;
+                    border-radius: 50%;
+                    background-color: #ec0927;
+                }
+                #ventre{
+                    top: 226px;left: 327px;
+                    height: 115px;width: 115px;
+                    border-radius: 50% 50% 50% 50%;
+                    background-color: black;
+                }
+                #bouton-gauche{
+                    top: 350px;left: 330;
+                    background-color: white;
+                    height: 25px;width: 20px;
+                    border-radius: 50%;
+
+                }
+                #bouton-droit{
+                    top: 350px;left: 398;
+                    background-color: white;
+                    height: 25px;width: 20px;
+                    border-radius: 50%;
+                }
+                #avant-bras-gauche{
+                    border-radius: 40%;
+                    top: 222;left: 265;
+                    height: 20px;width: 90px;
+                    rotate: z -8deg;
+                    background-color: black;
+                }
+                #avant-bras-droit{
+                    border-radius: 40%;
+                    top: 230px;left: 430px;
+                    height: 20px;width: 100px;
+                    rotate: z 10deg;
+                    background-color: black;
+                }
+                #apres-bras-gauche{
+                    border-radius: 40%;
+                    top: 245px;left: 255px;
+                    height: 30px;width: 70px;
+                    rotate: z 55deg;
+                    background-color: black;
+                }
+                #apres-bras-droit{
+                    z-index: 1;
+                    border-radius: 40%;
+                    top: 255px;left: 469px;
+                    height: 30px;width: 70px;
+                    rotate: z -40deg;
+                    background-color: black;
+                }
+                #manche-gauche{
+                    rotate: z -20deg;
+                    border-radius: 50%;
+                    top: 265px;left: 275px;
+                    height: 30px;width: 45px;
+                    background-color: white;
+                }
+                #main-gauche{
+                    border-radius: 50%;
+                    top: 275px;left: 278px;
+                    height: 70px;width: 70px;
+                    background-color: white;
+                }
+                #doigt-gauche-color{
+                    z-index: 1;
+                    rotate: z 30deg;
+                    top: 312px;left: 247px;
+                    height: 25px;width: 60px;
+                    border-radius: 50%;
+                    border: 0;
+                    background-color: white;
+                }
+                #doigt-gauche-1{
+                    rotate: z 30deg;
+                    top: 310px;left: 245px;
+                    height: 25px;width: 60px;
+                    border-radius: 50%;
+                    background-color: white;
+                }
+                #doigt-gauche-2{
+                    rotate: z 30deg;
+                    top: 300px;left: 245px;
+                    height: 25px;width: 60px;
+                    border-radius: 50%;
+                    background-color: white;
+                }
+                #doigt-gauche-3{
+                    rotate: z 30deg;
+                    top: 295px;left: 255px;
+                    height: 25px;width: 60px;
+                    border-radius: 50%;
+                    background-color: white;
+                }
+                #trait-gauche-1{
+                    top:295px;left: 300px;
+                    height: 20px;width: 4px;
+                    border-radius: 50%;
+                }
+                #trait-gauche-2{
+                    rotate: z -30deg;
+                    top:290px;left: 320px;
+                    height: 20px;width: 4px;
+                    border-radius: 50%;
+                }
+                #trait-gauche-3{
+                    height: 100px;width: 100px;
+                    left: 100px;
+                    background-color: black;
+                    border-radius: 50%;
+                    display: none;
+
+                }
+
+                #manche-droite{
+                    z-index: 1;
+                    rotate: z 30deg;
+                    border-radius: 50%;
+                    top: 275px;left: 455px;
+                    height: 30px;width: 45px;
+                    background-color: white;
+                }
+                #main-droite{
+                    z-index: 1;
+                    border-radius: 50%;
+                    top: 282px;left: 415px;
+                    height: 80px;width: 80px;
+                    background-color: white;
+                }
+                #doigt-droit-color{
+                    z-index: 1;
+                    rotate: z 5deg;
+                    top: 332px;left: 467px;
+                    height: 25px;width: 60px;
+                    border-radius: 50%;
+                    border: 0;
+                    background-color: white;
+                }
+                #doigt-droit-1{
+                    rotate: z 5deg;
+                    top: 330px;left: 465px;
+                    height: 25px;width: 60px;
+                    border-radius: 50%;
+                    background-color: white;
+                }
+                #doigt-droit-2{
+                    rotate: z 5deg;
+                    top: 320px;left: 475px;
+                    height: 25px;width: 60px;
+                    border-radius: 50%;
+                    background-color: white;
+                }
+                #doigt-droit-3{
+                    rotate: z 5deg;
+                    top: 310px;left: 465px;
+                    height: 25px;width: 60px;
+                    border-radius: 50%;
+                    background-color: white;
+                }
+                #trait-droit-1{
+                    z-index: 2;
+                    rotate: z 40deg;
+                    top:295px;left: 430px;
+                    height: 20px;width: 4px;
+                    border-radius: 50%;
+                }
+                #trait-droit-2{
+                    z-index: 2;
+                    rotate: z 30deg;
+                    top:310px;left: 435px;
+                    height: 20px;width: 4px;
+                    border-radius: 50%;
+                }
+                #trait-droit-3{
+                    z-index: 2;
+                    rotate: z 15deg;
+                    top:325px;left: 447px;
+                    height: 20px;width: 4px;
+                    border-radius: 50%;
+                }
+                #move{
+                    position: absolute;
+                    top: 70px;left: 320px;
+                }
+                [alt=logo]{
+                    z-index: 1;
+                    position: absolute;
+                    top: 400px;left: 380px;
+                    width: 650px;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="move">
+                <img src="image/michey.jpeg" type="image/jpeg" alt="mickey">
+
+                <div id="doigt-gauche-color"></div>
+                <div id="doigt-gauche-3"></div>
+                <div id="doigt-gauche-2"></div>
+                <div id="doigt-gauche-1"></div>
+
+                <div id="main-droite"></div>
+                <div id="manche-droite"></div>
+                <div id="trait-droit-1"></div>
+                <div id="trait-droit-2"></div>
+                <div id="trait-droit-3"></div>
+
+                <div id="avant-bras-gauche"></div>
+                <div id="avant-bras-droit"></div>
+
+                <div id="apres-bras-gauche"></div>            
+                <div id="apres-bras-droit"></div>
+
+                <div id="doigt-droit-color"></div>
+                <div id="doigt-droit-3"></div>
+                <div id="doigt-droit-2"></div>
+                <div id="doigt-droit-1"></div>
+
+
+                <div id="manche-gauche"></div>
+                <div id="main-gauche"></div>
+                <div id="trait-gauche-1"></div>
+                <div id="trait-gauche-2"></div>
+                <div id="trait-gauche-3"></div>
+
+
+                <div id="torse"></div>
+                <div id="torse-bi"></div>
+                <div id="pantalon"></div>
+                <div id="ventre"></div>
+                <div id="bouton-gauche"></div>
+                <div id="bouton-droit"></div>
+
+                <div id="oreille-gauche"></div>
+                <div id="oreille-droite"></div>
+                <div id="tete">
+                    <div id="cache-oeil"></div>
+                    <div id="grand-bouche"></div>
+                    <div id="grand-oeil-droit"></div>
+                    <div id="grand-oeil-gauche"></div>
+                    <div id="oeil-gauche"></div>
+                    <div id="oeil-droit"></div>
+                </div>
+                <div id="sous-bouche"></div>
+                <div id="bouche">
+                    <div id="langue-2"></div>
+                    <div id="langue-1"></div>
+                </div>
+                <div id="av-museau"></div>
+                <div id="museau-ar"></div>
+                <div id="museau-av"></div>
+                <div id="nez"></div>
+            </div>
+
+            <img src="image/Mickey-Mouse-Logo.png" type="image/png" alt="logo">
+        </body>
+    </html>
